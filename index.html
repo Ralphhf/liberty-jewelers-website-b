@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberty Jewelers - Where Tampa's Love Stories Shine Forever</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #faf8f5;
+            --bg-secondary: #ffffff;
+            --text-primary: #2d2d2d;
+            --text-secondary: #6b6b6b;
+            --accent: #9a7b4f;
+            --accent-dark: #7d6340;
+            --accent-light: #b89968;
+            --border: #e8e3db;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-secondary);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            padding-right: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(154, 123, 79, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(154, 123, 79, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+        }
+
+        .years-badge {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow);
+            height: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-credits {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .stars {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input, textarea {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background-color: var(--bg-primary);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        #formStatus {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .hero-container {
+                flex-direction: column;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Liberty Jewelers</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Liberty Jewelers</h1>
+                <p class="tagline">Where Tampa's Love Stories Shine Forever</p>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Discover exceptional jewelry and personalized service that has made us Tampa's trusted jeweler for over 20 years. From custom designs to expert repairs, we bring brilliance to every piece.</p>
+                <a href="#contact" class="btn">Start Your Story</a>
+            </div>
+            <div class="hero-image fade-in">
+                <img src="https://images.unsplash.com/photo-1745030174513-6b08bc58ca1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHwxMDB8fGx1eHVyeSUyMGRpYW1vbmQlMjBqZXdlbHJ5JTIwZGFyayUyMGJhY2tncm91bmQlMjBlbGVnYW50fGVufDB8MHx8fDE3NjQ4MjU1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Luxury Diamond Jewelry">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in" id="about">
+        <span class="years-badge">20 Years of Excellence</span>
+        <h2>Your Tampa Jewelry Experts</h2>
+        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">For two decades, Liberty Jewelers has been the heart of Tampa's jewelry community. We believe every piece tells a story, and we're honored to be part of yours. Our master jewelers combine traditional craftsmanship with modern design to create pieces that capture your unique moments and memories.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title fade-in">Our Services</h2>
+        <p class="section-subtitle fade-in">Expert care for all your jewelry needs</p>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">💍</div>
+                <h3>Custom Engagement Ring Design</h3>
+                <p>Create the perfect symbol of your love with our custom design service. Work directly with our designers to bring your vision to life.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🔧</div>
+                <h3>Professional Jewelry Repair</h3>
+                <p>Trust our expert craftsmen to restore your precious pieces. From simple fixes to complex restorations, we handle it all with care.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">⌚</div>
+                <h3>Watch Battery Replacement & Servicing</h3>
+                <p>Keep your timepiece running perfectly with our professional watch services. Quick turnaround and guaranteed quality.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">📋</div>
+                <h3>Jewelry Appraisals & Insurance</h3>
+                <p>Get accurate, certified appraisals for insurance and estate purposes. Protect your investment with proper documentation.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">📿</div>
+                <h3>Pearl Restringing & Restoration</h3>
+                <p>Preserve your pearls with professional restringing and restoration services. We'll make them look as beautiful as the day you got them.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title fade-in">Our Gallery</h2>
+        <p class="section-subtitle fade-in">Showcasing our finest pieces and craftsmanship</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1534875502980-5114a191aca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHw1NHx8ZGlhbW9uZCUyMGVuZ2FnZW1lbnQlMjByaW5nJTIwY2xvc2V1cCUyMGJva2VofGVufDB8MHx8fDE3NjQ4MjU1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Diamond Engagement Ring">
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1663079899584-64acea4d6858?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHwyfHxnb2xkJTIwbmVja2xhY2UlMjBqZXdlbHJ5JTIwcGhvdG9ncmFwaHl8ZW58MHwwfHx8MTc2NDgyNTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Gold Necklace">
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1705572835631-fe7ec87b6ad2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHw5NXx8bHV4dXJ5JTIwd2F0Y2glMjB0aW1lcGllY2V8ZW58MHwwfHx8MTc2NDgyNTUzOHww&ixlib=rb-4.1.0&q=80&w=1080" alt="Luxury Watch">
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1657869208369-6d6e7f5b7013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHw4M3x8cGVhcmwlMjBlYXJyaW5ncyUyMGVsZWdhbnR8ZW58MHwwfHx8MTc2NDgyNTUzOXww&ixlib=rb-4.1.0&q=80&w=1080" alt="Pearl Earrings">
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1556003267-b07b51684c5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHw1N3x8Z2Vtc3RvbmUlMjByaW5nJTIwc2FwcGhpcmUlMjBydWJ5fGVufDB8MHx8fDE3NjQ4MjU1Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Gemstone Ring">
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1667138410703-f43ce0ce7542?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MzgyMjB8MHwxfHNlYXJjaHwxMTF8fGpld2VscnklMjBkaXNwbGF5JTIwdmVsdmV0JTIwbHV4dXJ5fGVufDB8MHx8fDE3NjQ4MjU1NDB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Jewelry Display">
+            </div>
+        </div>
+        <p class="photo-credits">
+            Photo credits: Lauren Richmond, Mahbod Akhzami, Duong Ngan, sheilabox, Alex Hudson, PerfectMirror via Unsplash
+        </p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title fade-in">What Our Customers Say</h2>
+        <p class="section-subtitle fade-in">Real stories from our valued clients</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"They resized my grandmother's ring perfectly and even cleaned it for free. The staff treated a family heirloom with such care and respect. I won't go anywhere else!"</p>
+                <p class="testimonial-author">- Maria Rodriguez</p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Worked with them to design my fiancée's dream engagement ring. They stayed within my budget and created something more beautiful than I imagined possible."</p>
+                <p class="testimonial-author">- James Mitchell</p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Been coming here for years for watch repairs and jewelry cleaning. Fair prices, quick turnaround, and they always remember my name. Real neighborhood gem."</p>
+                <p class="testimonial-author">- Deborah Chen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title fade-in">Visit Us Today</h2>
+        <p class="section-subtitle fade-in">Let's create something beautiful together</p>
+        <div class="contact fade-in">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <span>📍</span> 1957 W M.L.K. Jr Blvd, Tampa, FL 33607
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span> (631) 710-8938
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span> ralph_farah_2001@hotmail.com
+                    </div>
+                    <div class="contact-item">
+                        <span>🕐</span> Mon-Fri: 10am-6pm | Sat: 10am-4pm
+                    </div>
+                </div>
+                <div>
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <input type="hidden" name="websiteId" value="282021c069a6dfc3eef8b3463eff7622">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="tel" name="phone" placeholder="Phone">
+                        <textarea name="message" placeholder="Message" required></textarea>
+                        <button type="submit" class="btn">Send</button>
+                        <div id="formStatus"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Liberty Jewelers. Where Tampa's Love Stories Shine Forever.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit',async e=>{e.preventDefault();const b=e.target.querySelector('button');b.disabled=true;b.textContent='Sending...';try{const r=await fetch('https://no-website-finder.onrender.com/api/form-submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({websiteId:e.target.querySelector('[name=websiteId]').value,name:e.target.querySelector('[name=name]').value,email:e.target.querySelector('[name=email]').value,phone:e.target.querySelector('[name=phone]').value,message:e.target.querySelector('[name=message]').value})});const d=await r.json();document.getElementById('formStatus').textContent=d.success?'✓ Sent!':'✗ Error';document.getElementById('formStatus').style.color=d.success?'#22c55e':'#ef4444';}catch(err){document.getElementById('formStatus').textContent='✗ Failed';}b.disabled=false;b.textContent='Send';});
+    </script>
+</body>
+</html>
